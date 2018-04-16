@@ -7,12 +7,20 @@
  */
 ?>
 @include('layouts.header', ['title' => $title])
-<div class="list-news">
-    <div>
-        <a href="{{ env('APP_HOME_URL') }}news/create" class="btn btn-green">Create</a>
-    </div>
 
-    <table id="newsTable" class="display initTable">
+<div style="padding: 10px;">
+    <h2>List News</h2>
+    <div style="padding: 5px; margin-top: 10px; margin-bottom: 10px;">
+        <a href="{{ env('APP_HOME_URL') }}create" class="btn btn-success">Create</a>
+    </div>
+    @if(Session::has('news-created'))
+        <div class="success" style="margin-top: 10px; margin-bottom: 10px;">News has been created</div>
+    @endif
+
+    @if(Session::has('news-deleted'))
+        <div class="error" style="margin-top: 10px; margin-bottom: 10px;">News has been removed</div>
+    @endif
+    <table id="newsTable" border="1">
         <thead>
         <tr>
             <th data-width="5%">News ID</th>
@@ -24,18 +32,19 @@
         </tr>
         </thead>
         <tbody>
-        
+        @foreach($news as $news_data)
             <tr>
-                <td>1</td>
-                <td>title news</td>
-                <td>Content News</td>
-                <td>Author News</td>
-                <td>Created</td>
+                <td>{{ $news_data->ID }}</td>
+                <td>{{ $news_data->title }}</td>
+                <td>{{ $news_data->content }}</td>
+                <td>{{ $news_data->author }}</td>
+                <td>{{ date('j F Y', $news_data->created) }}</td>
                 <td>
-                    <a href="{{ env('APP_HOME_URL') }}news/edit?ID=1" class="btn btn-green">Edit</a>
-                    <a href="{{ env('APP_HOME_URL') }}news/remove?ID=1" class="btn btn-red">Remove</a>
+                    <a href="{{ env('APP_HOME_URL') }}edit?ID={{base64_encode($news_data->ID) }}" class="btn btn-green">Edit</a>
+                    <a href="{{ env('APP_HOME_URL') }}remove?ID={{ base64_encode($news_data->ID) }}" class="btn btn-red">Remove</a>
                 </td>
             </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

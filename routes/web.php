@@ -13,11 +13,11 @@
 
 Route::get('/',                     'NewsController@renderNews');
 
-Route::get('/news/create',                     'NewsController@renderCreateNews');
-Route::post('/news/create',                     'NewsController@handleCreateNews');
+Route::get('/create',                     'NewsController@renderCreateNews');
+Route::post('/create',                     'NewsController@handleCreateNews');
 
-Route::get('/news/edit',                     'NewsController@renderUpdateNews');
-Route::post('/news/edit',                     'NewsController@handleUpdateNews');
+Route::get('/edit',                     'NewsController@renderUpdateNews');
+Route::post('/edit',                     'NewsController@handleUpdateNews');
 
-Route::get('/news/delete',                     'NewsController@renderRemoveNews');
-Route::post('/news/delete',                     'NewsController@handleRemoveNews');
+Route::get('/remove',                     'NewsController@renderRemoveNews');
+Route::post('/remove',                     'NewsController@handleRemoveNews');
