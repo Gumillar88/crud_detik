@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',                     'NewsController@renderNews');
+
+Route::get('/news/create',                     'NewsController@renderCreateNews');
+Route::post('/news/create',                     'NewsController@handleCreateNews');
+
+Route::get('/news/edit',                     'NewsController@renderUpdateNews');
+Route::post('/news/edit',                     'NewsController@handleUpdateNews');
+
+Route::get('/news/delete',                     'NewsController@renderRemoveNews');
+Route::post('/news/delete',                     'NewsController@handleRemoveNews');
