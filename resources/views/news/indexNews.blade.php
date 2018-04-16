@@ -23,7 +23,6 @@
     <table id="newsTable" border="1">
         <thead>
         <tr>
-            <th data-width="5%">News ID</th>
             <th data-width="20%">title</th>
             <th data-width="20%">Content</th>
             <th data-width="10%">Author</th>
@@ -34,7 +33,6 @@
         <tbody>
         @foreach($news as $news_data)
             <tr>
-                <td>{{ $news_data->ID }}</td>
                 <td>{{ $news_data->title }}</td>
                 <td>{{ $news_data->content }}</td>
                 <td>{{ $news_data->author }}</td>
